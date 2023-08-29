@@ -3,12 +3,16 @@ import {SafeAreaView, StatusBar} from 'react-native';
 
 import {RecoilRoot} from 'recoil';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  NavigationContainer,
+  useNavigationContainerRef,
+} from '@react-navigation/native';
+import RootStackNavigator from './navigators';
 
 const queryClient = new QueryClient();
 
 function App() {
-  const ref = React.useRef();
+  const ref = useNavigationContainerRef();
 
   const [initialState] = React.useState();
 
@@ -18,7 +22,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
           <NavigationContainer initialState={initialState} ref={ref}>
-            <RootNavigator />
+            <RootStackNavigator />
           </NavigationContainer>
         </RecoilRoot>
       </QueryClientProvider>
