@@ -1,4 +1,5 @@
 {
+  "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
     "jsx": "react",
     "isolatedModules": true,
@@ -29,8 +30,7 @@
       ],
       "@screens/*": [
         "./src/screens/*"
-      ],
+      ]
     }
-  },
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  }
 }

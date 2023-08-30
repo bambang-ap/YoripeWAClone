@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import {SafeAreaView, StatusBar, Text} from 'react-native';
 
 import {RecoilRoot} from 'recoil';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
@@ -17,7 +17,7 @@ function App() {
   const [initialState] = React.useState();
 
   return (
-    <SafeAreaView>
+    <>
       <StatusBar barStyle="dark-content" />
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
@@ -26,7 +26,7 @@ function App() {
           </NavigationContainer>
         </RecoilRoot>
       </QueryClientProvider>
-    </SafeAreaView>
+    </>
   );
 }
 

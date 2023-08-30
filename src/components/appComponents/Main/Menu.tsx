@@ -12,7 +12,7 @@ export default function MainMenu() {
     <View className="flex-row justify-between">
       {listMenu.map(menu => {
         return (
-          <View className="flex-1">
+          <View key={menu} className="flex-1">
             <Button title={menu} onPress={() => setMenu(menu)} />
           </View>
         );

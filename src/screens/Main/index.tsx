@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Animated, Dimensions, View} from 'react-native';
+import {Animated, Dimensions, SafeAreaView, View} from 'react-native';
 
 import CallsScreen from './CallsScreen';
 import StatusScreen from './StatusScreen';
@@ -12,11 +12,11 @@ import MainMenu from '@appComp/Main/Menu';
 
 export default function MainScreen() {
   return (
-    <View className='flex-1'>
+    <SafeAreaView>
       <MainHeader />
       <MainMenu />
       <RenderView />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -29,21 +29,23 @@ function RenderView() {
   const translateX = animValue.interpolate({
     inputRange: [0, 1, 2],
     get outputRange() {
-      return this.inputRange.map((range: number) => -(width * range));
+      return this.inputRange.map((val: number) => -(val * width));
     },
   });
 
   React.useEffect(() => {
     const index = Object.values(MenuList).findIndex(val => val === menu);
     Animated.timing(animValue, {
-      duration: 500,
+      duration: 250,
       toValue: index,
       useNativeDriver: true,
     }).start();
   }, [menu]);
 
   return (
-    <Animated.View style={{width: width * 3, transform: [{translateX}]}}>
+    <Animated.View
+      className="w-full h-full flex-row"
+      style={{width: width * 3, transform: [{translateX: translateX}]}}>
       <View className="flex-1">
         <ChatsScreen />
       </View>
