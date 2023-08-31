@@ -1,12 +1,13 @@
 import * as React from 'react';
-import {SafeAreaView, StatusBar, Text} from 'react-native';
+import {StatusBar} from 'react-native';
 
-import {RecoilRoot} from 'recoil';
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {
   NavigationContainer,
   useNavigationContainerRef,
 } from '@react-navigation/native';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import {RecoilRoot} from 'recoil';
+
 import RootStackNavigator from './navigators';
 
 const queryClient = new QueryClient();

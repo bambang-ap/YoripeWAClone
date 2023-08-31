@@ -1,8 +1,10 @@
-import {MenuList} from '@appTypes/navigators.type';
-import {atomMenu} from '@recoils';
 import * as React from 'react';
 import {Button, View} from 'react-native';
+
 import {useSetRecoilState} from 'recoil';
+
+import {MenuList} from '@appTypes/navigators.type';
+import {atomMenu} from '@recoils';
 
 export default function MainMenu() {
   const listMenu = Object.values(MenuList);

@@ -1,14 +1,16 @@
 import * as React from 'react';
 import {Animated, Dimensions, SafeAreaView, View} from 'react-native';
 
-import CallsScreen from './CallsScreen';
-import StatusScreen from './StatusScreen';
-import ChatsScreen from './ChatScreen';
-import MainHeader from '@appComp/Main/Header';
 import {useRecoilValue} from 'recoil';
-import {atomMenu} from '@recoils';
-import {MenuList} from '@appTypes/navigators.type';
+
+import MainHeader from '@appComp/Main/Header';
 import MainMenu from '@appComp/Main/Menu';
+import {MenuList} from '@appTypes/navigators.type';
+import {atomMenu} from '@recoils';
+
+import CallsScreen from './CallsScreen';
+import ChatsScreen from './ChatScreen';
+import StatusScreen from './StatusScreen';
 
 export default function MainScreen() {
   return (
@@ -40,12 +42,12 @@ function RenderView() {
       toValue: index,
       useNativeDriver: true,
     }).start();
-  }, [menu]);
+  }, [menu, animValue]);
 
   return (
     <Animated.View
       className="w-full h-full flex-row"
-      style={{width: width * 3, transform: [{translateX: translateX}]}}>
+      style={{width: width * 3, transform: [{translateX}]}}>
       <View className="flex-1">
         <ChatsScreen />
       </View>

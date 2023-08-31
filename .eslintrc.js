@@ -1,5 +1,5 @@
 const {
-  compilerOptions: { paths },
+  compilerOptions: {paths},
 } = require('./tsconfig.json');
 
 const aliasesImportGroups = Object.keys(paths).reduce((ret, pathKey) => {
@@ -17,7 +17,7 @@ module.exports = {
   },
   parser: '@typescript-eslint/parser',
   extends: ['@react-native-community'],
-  plugins: ['eslint-plugin-import-helpers'],
+  plugins: ['eslint-plugin-import-helpers', 'unused-imports'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -31,10 +31,10 @@ module.exports = {
       files: ['*.ts', '*.tsx'],
       rules: {
         'prettier/prettier': 0,
-        'max-len': [1, { code: 125 }],
+        'max-len': [1, {code: 125}],
         'no-return-await': 1,
         'implicit-arrow-linebreak': 0,
-        'no-tabs': ['error', { allowIndentationTabs: true }],
+        'no-tabs': ['error', {allowIndentationTabs: true}],
         'no-shadow': 0,
         '@typescript-eslint/no-shadow': 1,
         'no-undef': 'off',
@@ -105,7 +105,8 @@ module.exports = {
         ],
 
         '@typescript-eslint/no-explicit-any': 2,
-        '@typescript-eslint/no-unused-vars': 2,
+        'unused-imports/no-unused-vars': 1,
+        'unused-imports/no-unused-imports': 2,
 
         'operator-linebreak': 0,
 
@@ -116,10 +117,9 @@ module.exports = {
         'no-underscore-dangle': 0,
         'no-useless-rename': 2,
         'object-shorthand': 2,
-        'no-unused-vars': 0,
         'no-nested-ternary': 0,
         'no-unreachable': 1,
-        'no-console': [1, { allow: ['info'] }],
+        'no-console': [1, {allow: ['info']}],
         'import-helpers/order-imports': [
           'warn',
           {
@@ -130,7 +130,7 @@ module.exports = {
               aliasesImportGroups,
               ['parent', 'index', 'sibling'],
             ],
-            alphabetize: { order: 'asc', ignoreCase: false },
+            alphabetize: {order: 'asc', ignoreCase: false},
           },
         ],
       },

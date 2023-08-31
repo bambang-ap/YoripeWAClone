@@ -1,17 +1,20 @@
 const {
-  compilerOptions: { baseUrl, paths },
+  compilerOptions: {baseUrl, paths: pathLists},
 } = require('./tsconfig.json');
 
-const aliasesImports = Object.entries(paths).reduce((ret, [pathKey, paths]) => {
-  const regexEndStar = new RegExp(/\/\*$/);
-  const regexFirstDot = new RegExp(/^\./);
-  const key = pathKey.replace(regexEndStar, '');
-  ret[key] = paths.map(value => {
-    const path = value.replace(regexEndStar, '').replace(regexFirstDot, '');
-    return `${baseUrl}${path}`;
-  });
-  return ret;
-}, {});
+const aliasesImports = Object.entries(pathLists).reduce(
+  (ret, [pathKey, paths]) => {
+    const regexEndStar = new RegExp(/\/\*$/);
+    const regexFirstDot = new RegExp(/^\./);
+    const key = pathKey.replace(regexEndStar, '');
+    ret[key] = paths.map(value => {
+      const path = value.replace(regexEndStar, '').replace(regexFirstDot, '');
+      return `${baseUrl}${path}`;
+    });
+    return ret;
+  },
+  {},
+);
 
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],

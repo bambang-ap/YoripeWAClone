@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {TextInput, View} from 'react-native';
+
 import {Icon} from '@components';
 
 export default function MessageBox() {

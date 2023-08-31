@@ -1,5 +1,6 @@
-import {MenuList} from '@appTypes/navigators.type';
 import {atom} from 'recoil';
+
+import {MenuList} from '@appTypes/navigators.type';
 
 export const atomMenu = atom<MenuList>({
   key: 'atomMenu',

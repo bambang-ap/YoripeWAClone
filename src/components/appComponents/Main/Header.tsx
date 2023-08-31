@@ -1,8 +1,6 @@
-import {MenuList} from '@appTypes/navigators.type';
-import {atomMenu} from '@recoils';
 import * as React from 'react';
-import {Button, Text, View} from 'react-native';
-import {useSetRecoilState} from 'recoil';
+import {Text, View} from 'react-native';
+
 import {Icon} from '@components';
 
 export default function MainHeader() {
@@ -11,7 +9,7 @@ export default function MainHeader() {
       <View className="flex-1">
         <Text>WhatsApp</Text>
       </View>
-      <View className="flex-row gap-2">
+      <View className="flex-row`` gap-2">
         <Icon name="camera" />
         <Icon name="search" />
         <Icon name="ellipsis-v" />
