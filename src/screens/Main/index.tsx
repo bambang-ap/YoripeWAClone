@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Animated, Dimensions} from 'react-native';
+import {Animated, LayoutRectangle, View} from 'react-native';
 
 import {useRecoilValue} from 'recoil';
 
@@ -25,7 +25,7 @@ export default function MainScreen() {
 
 function RenderView() {
   const menu = useRecoilValue(atomMenu);
-  const {width} = Dimensions.get('screen');
+  const [{width}, setLayout] = React.useState({width: 0} as LayoutRectangle);
 
   const animValue = React.useRef(new Animated.Value(0)).current;
 
@@ -46,12 +46,15 @@ function RenderView() {
   }, [menu, animValue]);
 
   return (
-    <Animated.View
-      className="w-full h-full flex-row"
-      style={{width: width * 3, transform: [{translateX}]}}>
-      <ChatsScreen />
-      <StatusScreen />
-      <CallsScreen />
-    </Animated.View>
+    <>
+      <View onLayout={({nativeEvent: {layout}}) => setLayout(layout)} />
+      <Animated.View
+        className="flex-1 flex-row"
+        style={{width: width * 3, transform: [{translateX}]}}>
+        <ChatsScreen />
+        <StatusScreen />
+        <CallsScreen />
+      </Animated.View>
+    </>
   );
 }

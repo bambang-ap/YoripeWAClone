@@ -17,9 +17,7 @@ export default function ChatHeader() {
         <View className="w-10 h-10 rounded-xl bg-gray-900" />
         <Text>Name</Text>
       </View>
-      <Icon name="camera" />
-      <Icon name="phone-alt" />
-      <Icon name="ellipsis-v" />
+      <Icon name="search" />
     </Header>
   );
 }

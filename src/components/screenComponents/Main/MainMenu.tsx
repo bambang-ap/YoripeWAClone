@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {Button, View} from 'react-native';
 
-import {classNames} from '@utils';
 import {useRecoilState} from 'recoil';
 
 import {MenuList} from '@appTypes/navigators.type';
 import {atomMenu} from '@recoils';
+import {classNames} from '@utils';
 
 export default function MainMenu() {
   const listMenu = Object.values(MenuList);

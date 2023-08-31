@@ -1,6 +1,7 @@
 export enum RootStackList {
   Chats = 'Chats',
   Chat = 'Chat',
+  UserInfo = 'UserInfo',
 }
 
 export enum MenuList {
@@ -12,4 +13,5 @@ export enum MenuList {
 export type RootStackParamList = {
   [RootStackList.Chats]: undefined;
   [RootStackList.Chat]: {id: string};
+  [RootStackList.UserInfo]: {id: string};
 };
