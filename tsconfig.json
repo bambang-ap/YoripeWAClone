@@ -28,6 +28,12 @@
       "@recoils": [
         "./src/recoils"
       ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@utils": [
+        "./src/utils"
+      ],
       "@screens/*": [
         "./src/screens/*"
       ]

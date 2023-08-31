@@ -1,16 +1,16 @@
 import * as React from 'react';
-import {View} from 'react-native';
 
+import AppScreen from '@appComp/AppScreen';
 import ChatHeader from '@appComp/Chat/Header';
 import MessageBox from '@appComp/Chat/MessageBox';
 import Messages from '@appComp/Chat/Messages';
 
 export default function ChatScreen() {
   return (
-    <View className="flex-1">
+    <AppScreen>
       <ChatHeader />
       <Messages />
       <MessageBox />
-    </View>
+    </AppScreen>
   );
 }

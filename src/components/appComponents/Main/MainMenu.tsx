@@ -1,20 +1,28 @@
 import * as React from 'react';
 import {Button, View} from 'react-native';
 
-import {useSetRecoilState} from 'recoil';
+import {classNames} from '@utils';
+import {useRecoilState} from 'recoil';
 
 import {MenuList} from '@appTypes/navigators.type';
 import {atomMenu} from '@recoils';
 
 export default function MainMenu() {
   const listMenu = Object.values(MenuList);
-  const setMenu = useSetRecoilState(atomMenu);
+  const [currentMenu, setMenu] = useRecoilState(atomMenu);
 
   return (
     <View className="flex-row justify-between">
       {listMenu.map(menu => {
+        const isSelected = currentMenu === menu;
+
         return (
-          <View key={menu} className="flex-1">
+          <View
+            key={menu}
+            className={classNames('flex-1', {
+              ['bg-green-400']: isSelected,
+              ['bg-gray-400']: !isSelected,
+            })}>
             <Button title={menu} onPress={() => setMenu(menu)} />
           </View>
         );

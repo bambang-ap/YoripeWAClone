@@ -11,5 +11,5 @@ export enum MenuList {
 
 export type RootStackParamList = {
   [RootStackList.Chats]: undefined;
-  [RootStackList.Chat]: undefined;
+  [RootStackList.Chat]: {id: string};
 };

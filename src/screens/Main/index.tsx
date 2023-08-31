@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {Animated, Dimensions, SafeAreaView, View} from 'react-native';
+import {Animated, Dimensions, SafeAreaView} from 'react-native';
 
 import {useRecoilValue} from 'recoil';
 
-import MainHeader from '@appComp/Main/Header';
-import MainMenu from '@appComp/Main/Menu';
+import MainHeader from '@appComp/Main/MainHeader';
+import MainMenu from '@appComp/Main/MainMenu';
 import {MenuList} from '@appTypes/navigators.type';
 import {atomMenu} from '@recoils';
 
@@ -48,15 +48,9 @@ function RenderView() {
     <Animated.View
       className="w-full h-full flex-row"
       style={{width: width * 3, transform: [{translateX}]}}>
-      <View className="flex-1">
-        <ChatsScreen />
-      </View>
-      <View className="flex-1">
-        <StatusScreen />
-      </View>
-      <View className="flex-1">
-        <CallsScreen />
-      </View>
+      <ChatsScreen />
+      <StatusScreen />
+      <CallsScreen />
     </Animated.View>
   );
 }
