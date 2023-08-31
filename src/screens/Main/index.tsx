@@ -1,12 +1,13 @@
 import * as React from 'react';
-import {Animated, Dimensions, SafeAreaView} from 'react-native';
+import {Animated, Dimensions} from 'react-native';
 
 import {useRecoilValue} from 'recoil';
 
-import MainHeader from '@appComp/Main/MainHeader';
-import MainMenu from '@appComp/Main/MainMenu';
+import AppScreen from '@appComp/AppScreen';
 import {MenuList} from '@appTypes/navigators.type';
 import {atomMenu} from '@recoils';
+import MainHeader from '@screenComp/Main/MainHeader';
+import MainMenu from '@screenComp/Main/MainMenu';
 
 import CallsScreen from './CallsScreen';
 import ChatsScreen from './ChatScreen';
@@ -14,11 +15,11 @@ import StatusScreen from './StatusScreen';
 
 export default function MainScreen() {
   return (
-    <SafeAreaView>
+    <AppScreen>
       <MainHeader />
       <MainMenu />
       <RenderView />
-    </SafeAreaView>
+    </AppScreen>
   );
 }
 

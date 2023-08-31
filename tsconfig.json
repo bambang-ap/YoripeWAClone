@@ -22,6 +22,9 @@
       "@appComp/*": [
         "./src/components/appComponents/*"
       ],
+      "@screenComp/*": [
+        "./src/components/screenComponents/*"
+      ],
       "@navigators/*": [
         "./src/navigators/*"
       ],
