@@ -1,3 +1,5 @@
+import {TUser} from './data.type';
+
 export enum RootStackList {
   Chats = 'Chats',
   Chat = 'Chat',
@@ -12,6 +14,6 @@ export enum MenuList {
 
 export type RootStackParamList = {
   [RootStackList.Chats]: undefined;
-  [RootStackList.Chat]: {id: string};
-  [RootStackList.UserInfo]: {id: string};
+  [RootStackList.Chat]: TUser;
+  [RootStackList.UserInfo]: TUser;
 };

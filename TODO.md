@@ -10,4 +10,4 @@
 - [ ] Each message should have message options/ reaction bubble.
 - [ ] Able to send and see the message immediately using input box.
 - [ ] Able to click on the chat header to open user/group information.
-- [ ] Implement a dummy API call that will return a list of messages that can be used to render chats in the UI. Use apiary.io to create such an API using any dummy data that suits you!
+- [ ] Implement a dummy API call that will return a list of messages that can be used to render chats in the UI. Use http://apiary.io to create such an API using any dummy data that suits you!

@@ -6,17 +6,16 @@ import {useRecoilValue} from 'recoil';
 import AppScreen from '@appComp/AppScreen';
 import {MenuList} from '@appTypes/navigators.type';
 import {atomMenu} from '@recoils';
-import MainHeader from '@screenComp/Main/MainHeader';
 import MainMenu from '@screenComp/Main/MainMenu';
 
 import CallsScreen from './CallsScreen';
-import ChatsScreen from './ChatScreen';
+import ChatsScreen from './ChatsScreen';
 import StatusScreen from './StatusScreen';
 
 export default function MainScreen() {
   return (
     <AppScreen>
-      <MainHeader />
+      {/* <MainHeader /> */}
       <MainMenu />
       <RenderView />
     </AppScreen>
