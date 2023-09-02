@@ -5,3 +5,10 @@ type ApiResponse<T> = {
   message: string;
   data: T;
 };
+
+type ApiResponsePagination<T> = ApiResponse<{
+  page: number;
+  totalPage: number;
+  totalCount: number;
+  data: T[];
+}>;

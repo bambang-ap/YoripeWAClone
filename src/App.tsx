@@ -10,7 +10,7 @@ import {RecoilRoot} from 'recoil';
 
 import RootStackNavigator from './navigators';
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 function App() {
   const ref = useNavigationContainerRef();

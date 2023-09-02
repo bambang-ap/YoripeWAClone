@@ -13,6 +13,11 @@ export type TChat = {
   id: string;
   message: string;
   isYou: boolean;
-};
+} & (
+  | {
+      type: EUserType.P;
+    }
+  | {type: EUserType.G; sender: TPersonalUser}
+);
 
 export type TGroupChat = TChat & {sender: TPersonalUser};
