@@ -11,7 +11,7 @@ export function useListUsers() {
 }
 
 export function useListChats() {
-  return useInfiniteQuery({
+  const query = useInfiniteQuery({
     queryKey: ['list-chats'],
     async queryFn({pageParam = 1}) {
       const chats = await axios.get<ApiResponsePagination<TChat>>(
@@ -29,4 +29,19 @@ export function useListChats() {
       return a < b;
     },
   });
+
+  const dataList = query.data?.pages
+    .map((page, index) =>
+      page?.data?.data?.data.map(chat => {
+        /**
+         * NOTE:
+         * Prevent duplication of id, so keyExtractor will not encounter same key
+         * Of course in production data this is unnecessary
+         */
+        return {...chat, id: `PAGE${index}-${chat.id}`};
+      }),
+    )
+    .flat();
+
+  return {...query, dataList};
 }

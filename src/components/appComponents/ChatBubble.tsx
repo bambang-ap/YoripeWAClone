@@ -1,11 +1,17 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-import {TChat} from '@appTypes/data.type';
+import Highlighter from 'react-native-highlight-words';
+import {useRecoilValue} from 'recoil';
+
+import {ChatBubbleProps} from '@appTypes/propsType.type';
+import {atomMessageSearch} from '@recoils';
 import {classNames} from '@utils/index';
 
-export function ChatBubble(chat: TChat) {
+export function ChatBubble(chat: ChatBubbleProps) {
   const {id, isYou, message} = chat;
+
+  const {searchText} = useRecoilValue(atomMessageSearch);
 
   return (
     <View
@@ -17,7 +23,13 @@ export function ChatBubble(chat: TChat) {
           ['bg-green-600']: isYou,
         })}>
         <Text className="text-white">ID: {id}</Text>
-        <Text className="text-white">{message}</Text>
+        <Highlighter
+          suppressHighlighting
+          highlightStyle={{backgroundColor: 'yellow', color: 'black'}}
+          searchWords={[searchText]}
+          textToHighlight={message}
+          className="text-white"
+        />
       </View>
     </View>
   );

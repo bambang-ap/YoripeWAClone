@@ -6,30 +6,29 @@ import {Icon} from 'src/components/base/Icon';
 
 import {ChatBubble} from '@appComp/ChatBubble';
 import {TChat} from '@appTypes/data.type';
+import {MessagesRef} from '@appTypes/propsType.type';
 import {useListChats} from '@query';
 
-export default function Messages() {
-  const ref = React.useRef<FlashList<TChat>>(null);
+const Messages = React.forwardRef<MessagesRef>(function Messages(_props, ref) {
+  const listRef = React.useRef<FlashList<TChat>>(null);
   const [isScrolled, setIsScrolled] = React.useState(false);
-  const {data, isFetchingNextPage, hasNextPage, fetchNextPage} = useListChats();
-
-  const dataList = data?.pages
-    .map((page, index) =>
-      page?.data?.data?.data.map(chat => {
-        // Prevent duplication of id, so keyExtractor will not encounter same key
-        // Of course in production data this is unnecessary
-        return {...chat, id: `PAGE${index}-${chat.id}`};
-      }),
-    )
-    .flat();
+  const {dataList, isFetchingNextPage, hasNextPage, fetchNextPage} =
+    useListChats();
 
   function loadMore() {
     if (hasNextPage) fetchNextPage();
   }
 
   function scrollToDown() {
-    ref.current?.scrollToIndex({index: 0, animated: true});
+    listRef.current?.scrollToIndex({index: 0, animated: true});
   }
+
+  React.useImperativeHandle(ref, () => {
+    return {
+      scrollToIndex: index =>
+        listRef.current?.scrollToIndex({index, animated: true}),
+    };
+  });
 
   return (
     <View className="flex-1">
@@ -42,7 +41,7 @@ export default function Messages() {
       )}
       <FlashList
         inverted
-        ref={ref}
+        ref={listRef}
         data={dataList}
         estimatedItemSize={69}
         onEndReached={loadMore}
@@ -58,4 +57,6 @@ export default function Messages() {
       />
     </View>
   );
-}
+});
+
+export default Messages;

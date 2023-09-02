@@ -2,7 +2,7 @@
 
 - [x] List of Groups/DMs
 - [x] Chat screen with chat view, input box, and header
-- [ ] Ability to search messages inside any chat screen.
+- [x] Ability to search messages inside any chat screen.
 
 # Functions
 

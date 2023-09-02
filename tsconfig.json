@@ -19,6 +19,9 @@
       "@query": [
         "./src/react-query"
       ],
+      "@hoc/*": [
+        "./src/hoc/*"
+      ],
       "@components": [
         "./src/components"
       ],
