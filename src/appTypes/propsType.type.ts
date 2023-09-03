@@ -24,4 +24,8 @@ export type MessagesRef = {
   scrollToIndex?: (index: number) => void;
 };
 
-export type InputProps = {placeholder?: string; autoFocus?: boolean};
+export type InputProps = {
+  placeholder?: string;
+  autoFocus?: boolean;
+  multiline?: boolean;
+};

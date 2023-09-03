@@ -1,4 +1,4 @@
-import {useInfiniteQuery, useQuery} from '@tanstack/react-query';
+import {useInfiniteQuery, useMutation, useQuery} from '@tanstack/react-query';
 import axios from 'axios';
 
 import {TChat, TUser} from '@appTypes/data.type';
@@ -11,8 +11,9 @@ export function useListUsers() {
 }
 
 export function useListChats() {
+  const queryKey = ['list-chats'];
   const query = useInfiniteQuery({
-    queryKey: ['list-chats'],
+    queryKey,
     async queryFn({pageParam = 1}) {
       const chats = await axios.get<ApiResponsePagination<TChat>>(
         `${API_HOST}/chats/${pageParam}`,
@@ -22,8 +23,11 @@ export function useListChats() {
     },
     getNextPageParam: (lastPage, allPages) => {
       const [a, b] = [
-        allPages.reduce((count, page) => count + page.data.data.data.length, 0),
-        lastPage.data.data.totalCount,
+        allPages.reduce(
+          (count, page) => count + page?.data?.data?.data?.length,
+          0,
+        ),
+        lastPage?.data?.data?.totalCount,
       ] as const;
 
       return a < b;
@@ -43,5 +47,11 @@ export function useListChats() {
     )
     .flat();
 
-  return {...query, dataList};
+  return {...query, queryKey, dataList};
+}
+
+export function useMutateNewChat() {
+  return useMutation((message: string) => {
+    return axios.post<ApiResponse>(`${API_HOST}/chats/${message}`);
+  });
 }

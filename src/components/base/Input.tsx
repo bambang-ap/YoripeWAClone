@@ -12,7 +12,7 @@ import {
 function InputComponent<F extends FieldValues>(
   props: ControlledComponentProps<F, InputProps>,
 ) {
-  const {controller, className, placeholder, autoFocus} = props;
+  const {controller, className, placeholder, autoFocus, multiline} = props;
   const {
     field: {value, onChange, ...field},
   } = controller;
@@ -20,6 +20,7 @@ function InputComponent<F extends FieldValues>(
   return (
     <TextInput
       {...field}
+      multiline={multiline}
       autoFocus={autoFocus}
       value={value}
       onChangeText={onChange}

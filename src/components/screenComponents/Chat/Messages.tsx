@@ -46,7 +46,7 @@ const Messages = React.forwardRef<MessagesRef>(function Messages(_props, ref) {
         estimatedItemSize={69}
         onEndReached={loadMore}
         onEndReachedThreshold={0}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item?.id}
         renderItem={({item}) => <ChatBubble {...item} />}
         refreshControl={<RefreshControl refreshing={isFetchingNextPage} />}
         onScroll={({
